@@ -1,0 +1,24 @@
+{
+  "name": "bitstarter",
+  "version": "1.0.0",
+  "description": "Crowd funding for goals and projects with Bitcoin.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Learn-by-doing/bitstarter.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Learn-by-doing/bitstarter/issues"
+  },
+  "homepage": "https://github.com/Learn-by-doing/bitstarter#readme",
+  "dependencies": {
+    "express": "4.14.0",
+    "knex": "0.11.9",
+    "mysql": "2.11.1"
+  }
+}
