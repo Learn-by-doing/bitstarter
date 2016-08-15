@@ -1,31 +1,21 @@
-var express = require("express");
-var handlebars = require('express-handlebars');
-var ss = require('serve-static');
+var express = require('express');
+var exphbr = require('express-handlebars');
+var serveStatic = require('serve-static');
 var app = express();
 
-app.engine('handlebars', handlebars({defaultLayout: 'main'}));
-app.set('view engine', 'handlebars');
+app.engine('html', exphbr({
+	defaultLayout: 'main',
+	extname: '.html'
+}));
 
-/* ROUTES */
+app.set('view engine', 'html');
 
-// public
-app.use(ss(__dirname + '/public'));
+app.use(serveStatic(__dirname + '/public'));
 
-
-// homepage
 app.get('/', function (req, res) {
-    res.render('home');
+	res.render('home');
 });
 
-
-
-
-
-
-
-
-
-
 app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
+	console.log('Example app listening on port 3000!');
 });
