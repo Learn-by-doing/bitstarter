@@ -1,22 +1,39 @@
 var prompt = require('prompt');
 var bcrypt = require('bcrypt');
 
+// database options
+var dbOptions = {
+	host     : '127.0.0.1',
+	port     : 3306,
+	user     : 'someuser',
+	password : 'somepass',
+	database : 'somedb'
+};
+
+// database connection
+var knex = require('knex')({
+	client: 'mysql',
+	connection: dbOptions
+});
+
+// create user table
+knex.schema.createTableIfNotExists('users', function(table) {
+	table.increments('id');
+	table.string('username');
+	table.string('password');
+	table.string('email');
+}).catch(console.log);
+
 // input data schema
 var schema = {
 	properties: {
 		username: {
 			description: 'Enter your username',
-		    pattern: /^([a-z0-9]{4,30})$/,
-		    message: 'Username must be only lowercase letters or numbers, length from 4 to 30 characters',
-		    required: true
-		},
-		name: {
-			description: 'Enter your name',
-			pattern: /^[a-zA-Z\s\-]+$/,
-			message: 'Name must be only letters, spaces or dashes',
+			pattern: /^([a-z0-9]{4,30})$/,
+			message: 'Username should be only lowercase letters or numbers, length from 4 to 30 characters',
 			required: true
 		},
-		email: { // TODO maybe it's better to use simple regex and do checks by sending an email
+		email: {
 			description: 'Enter your email',
 			pattern: /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i,
 			message: 'Please enter correct email',
@@ -25,8 +42,8 @@ var schema = {
 		password: {
 			description: 'Enter your password',
 			type: 'string',
-			pattern: /^([a-zA-Z0-9]{8,15})$/,
-			message: 'Password must be only letters or numbers, length from 8 to 15 characters',
+			pattern: /^([a-zA-Z0-9]{6,128})$/,
+			message: 'Please enter a password or passphrase, only letters or numbers, length from 6 to 128 characters',
 			hidden: true,
 			replace: '*',
 			required: true
@@ -34,7 +51,7 @@ var schema = {
 		password_retype: {
 			description: 'Retype your password',
 			type: 'string',
-			pattern: /^([a-zA-Z0-9]{8,15})$/,
+			pattern: /^([a-zA-Z0-9]{6,128})$/,
 			message: 'Please retype the same password',
 			hidden: true,
 			replace: '*',
@@ -51,23 +68,36 @@ prompt.start();
 // get the properties for the new user
 prompt.get(schema, function (err, result) {
 
-	// log the results
-	console.log('New user created:');
-	console.log('  username: ' + result.username);
-	console.log('  name: ' + result.name);
-	console.log('  email: ' + result.email);
+	// check if the username exists
+	knex.select()
+		.where('username', result.username)
+		.from('users')
+		.limit(1)
+		.then(function(results) {
+			if (results.length) {
+				console.log("Error: The username '" + result.username + "' already exists.");
+				process.exit(1);
+			}
+		}).catch(console.log);
 
 	// bcrypt the password
 	var rounds = 1;
 	var salt = bcrypt.genSaltSync(10);  
 	bcrypt.genSalt(rounds, function(err, salt) {
 		bcrypt.hash(result.password, salt, function(err, hash) {
-			console.log("  password hash: " + hash);
-			
-			// TODO add user to database
-
+			// store new user in db
+			knex('users').insert({
+				username: result.username,
+				email: result.email,
+				password: hash
+			}).then(function() {
+				// log new user data
+				console.log('New user created:');
+				console.log('  username: ' + result.username);
+				console.log('  email: ' + result.email);
+				console.log('  password hash: ' + hash);
+				process.exit(0);
+			}).catch(console.log);
 		});
 	});
 });
-
-// TODO create table to store users
