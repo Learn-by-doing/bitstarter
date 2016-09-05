@@ -12,9 +12,8 @@ app.set('view engine', 'html');
 
 app.use(serveStatic(__dirname + '/public'));
 
-app.get('/', function (req, res) {
-	res.render('home');
-});
+app.config = require('./config');
+require('./controllers')(app);
 
 app.listen(3000, function () {
 	console.log('Example app listening on port 3000!');
