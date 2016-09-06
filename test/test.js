@@ -45,14 +45,6 @@ describe('testing bitcoin.js', function () {
 		});
 	});
 
-	it('testing function getFunds for wrong address', function (done) {
-		var address_test = [wrongAddress];
-		bitcoin.getFunds(address_test, function(allAccountsReceived) {
 
-			expect(allAccountsReceived).to.be.undefined;
-			done();
-
-		});
-	});
 
 }); // closing describe testing bitcoin.js
