@@ -1,28 +1,8 @@
 var prompt = require('prompt');
 var bcrypt = require('bcrypt');
+var db = require('./database.js');
 
-// database options
-var dbOptions = {
-	host     : '127.0.0.1',
-	port     : 3306,
-	user     : 'someuser',
-	password : 'somepass',
-	database : 'somedb'
-};
 
-// database connection
-var knex = require('knex')({
-	client: 'mysql',
-	connection: dbOptions
-});
-
-// create user table
-knex.schema.createTableIfNotExists('users', function(table) {
-	table.increments('id');
-	table.string('username');
-	table.string('password');
-	table.string('email');
-}).catch(console.log);
 
 // input data schema
 var schema = {
@@ -69,7 +49,7 @@ prompt.start();
 prompt.get(schema, function (err, result) {
 
 	// check if the username exists
-	knex.select()
+	db.knex.select()
 		.where('username', result.username)
 		.from('users')
 		.limit(1)
@@ -82,11 +62,11 @@ prompt.get(schema, function (err, result) {
 
 	// bcrypt the password
 	var rounds = 1;
-	var salt = bcrypt.genSaltSync(10);  
+	var salt = bcrypt.genSaltSync(10);
 	bcrypt.genSalt(rounds, function(err, salt) {
 		bcrypt.hash(result.password, salt, function(err, hash) {
 			// store new user in db
-			knex('users').insert({
+			db.knex('users').insert({
 				username: result.username,
 				email: result.email,
 				password: hash

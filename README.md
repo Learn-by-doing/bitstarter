@@ -16,7 +16,7 @@ What you need:
 
 * Node.js - https://nodejs.org/en/ - you can use any version (lts/current)
 
-* Git - https://git-scm.com/downloads 
+* Git - https://git-scm.com/downloads
 
 You need to get both Node and git working before moving on with the rest of the instructions.
 Both have pretty straight forward setup guides so getting them working shouldn't be a problem.
@@ -25,6 +25,16 @@ Both have pretty straight forward setup guides so getting them working shouldn't
 
 2. navigate to your project directory and run ```npm install``` to install all the dependencies required by the project
 
-3. Run ```node index.js```
+3.
+* Add a user to the __save_a_pet__ database with the same name. Sample SQL statement to do this:
+```sql
+CREATE USER 'bitstarter'@'localhost' IDENTIFIED BY  'password';
+
+GRANT USAGE ON * . * TO  'bitstarter'@'localhost' IDENTIFIED BY  'password' WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;
+
+GRANT ALL PRIVILEGES ON  `bitstarter` . * TO  'bitstarter'@'localhost';
+```
+
+4. Run ```node index.js```
 
 That's it!
