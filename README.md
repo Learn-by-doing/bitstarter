@@ -23,10 +23,9 @@ Both have pretty straight forward setup guides so getting them working shouldn't
 
 1. After you get these 2 things working, you have to go to [https://github.com/Learn-by-doing/bitstarter](https://github.com/Learn-by-doing/bitstarter) and fork the git repository using these instructions [https://help.github.com/articles/fork-a-repo/](https://help.github.com/articles/fork-a-repo/)
 
-2. navigate to your project directory and run ```npm install``` to install all the dependencies required by the project
+2. Navigate to your project directory and run `npm install` to install all the dependencies required by the project
 
-3.
-* Add a user to the __save_a_pet__ database with the same name. Sample SQL statement to do this:
+3. Add a user to the __save_a_pet__ database with the same name. Sample SQL statement to do this:
 ```sql
 CREATE USER 'bitstarter'@'localhost' IDENTIFIED BY  'password';
 
@@ -35,6 +34,6 @@ GRANT USAGE ON * . * TO  'bitstarter'@'localhost' IDENTIFIED BY  'password' WITH
 GRANT ALL PRIVILEGES ON  `bitstarter` . * TO  'bitstarter'@'localhost';
 ```
 
-4. Run ```node index.js```
+4. Run `node index.js`
 
 That's it!
