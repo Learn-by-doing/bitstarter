@@ -1,7 +1,7 @@
 // for testing run  in the terminal:
 // node_modules/.bin/mocha test/test.js  or npm test
 
-var bitcoin = require('../bitcoin.js');
+var bitcoin = require('../services/bitcoin.js');
 var expect = require('chai').expect;
 
 
