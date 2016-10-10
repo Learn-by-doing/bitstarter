@@ -32,5 +32,12 @@
     "request": "^2.74.0",
     "serve-static": "^1.11.1",
     "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "eslint": "^3.7.1",
+    "grunt": "^1.0.1",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-eslint": "^19.0.0",
+    "gruntify-eslint": "^3.1.0"
   }
 }

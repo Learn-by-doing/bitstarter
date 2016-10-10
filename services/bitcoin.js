@@ -3,7 +3,7 @@
 var request = require('request');
 var _ = require('underscore');
 
-var bitcoin = module.exports = {
+module.exports = {
 
 	getFunds : function(addresses, callback) {
 
@@ -19,12 +19,9 @@ var bitcoin = module.exports = {
 					allAccountsReceived += obj.addresses[index].total_received;
 				});
 				callback(allAccountsReceived);
-			}
-			else {
+			} else {
 				console.log('There was an error')
 			}
-
-			});
-	},
-
+		});
+	}
 }; // closing bitcoin module.exports

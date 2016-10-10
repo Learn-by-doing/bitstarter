@@ -8,10 +8,10 @@ module.exports = {
 	},
 
 	dbOptions : {
-	  host     : '127.0.0.1',
-	  port     : 3306,
-	  user     : 'bitstarter',
-	  password : 'password',
-	  database : 'bitstarter'
+		host     : '127.0.0.1',
+		port     : 3306,
+		user     : 'bitstarter',
+		password : 'password',
+		database : 'bitstarter'
 	}
 };
