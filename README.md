@@ -27,15 +27,15 @@ Both have pretty straight forward setup guides so getting them working shouldn't
 
 2. Navigate to your project directory and run `npm install` to install all the dependencies required by the project
 
-3. Add a user to the __save_a_pet__ database with the same name. Sample SQL statement to do this:
-```sql
-CREATE USER 'bitstarter'@'localhost' IDENTIFIED BY  'password';
+3. Add a user to the __bitstarter__ database with the same name. Sample SQL statement to do this:
+  ```sql
+  CREATE USER 'bitstarter'@'localhost' IDENTIFIED BY  'password';
 
-GRANT USAGE ON * . * TO  'bitstarter'@'localhost' IDENTIFIED BY  'password' WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;
+  GRANT USAGE ON * . * TO  'bitstarter'@'localhost' IDENTIFIED BY  'password' WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;
 
-GRANT ALL PRIVILEGES ON  `bitstarter` . * TO  'bitstarter'@'localhost';
-```
+  GRANT ALL PRIVILEGES ON  `bitstarter` . * TO  'bitstarter'@'localhost';
+  ```
 
-4. Run `node index.js`
+4. Run `npm start`
 
 That's it!
