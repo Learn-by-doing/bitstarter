@@ -18,6 +18,8 @@ What you need:
 
 * Git - https://git-scm.com/downloads
 
+* MySql - http://www.mysql.com/ (for Ubuntu https://help.ubuntu.com/lts/serverguide/mysql.html)
+
 You need to get both Node and git working before moving on with the rest of the instructions.
 Both have pretty straight forward setup guides so getting them working shouldn't be a problem.
 
