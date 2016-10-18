@@ -1,3 +1,17 @@
 <h1>Bitstarter homepage</h1>
 
+
+{{#if username}}
+  <h1>Welcome to Bitstarter <strong>{{username}}</strong>! </h1>
+{{/if}}
+
+
+{{#unless username}}
+<a href="/login">Login</a>
+{{/unless}}
+{{#if username}}
+<a href="/logout">Logout</a>
+{{/if}}
+
+
 <!-- TODO: list of goals here -->

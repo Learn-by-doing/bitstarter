@@ -34,8 +34,12 @@ module.exports = function(app) {
 	});
 
 	app.get('/login', function(req, res, next) {
+		if (req.isAuthenticated()) {
+			res.redirect('/');
+		} else {
+			res.render('login');
+		}
 
-		res.render('login');
 	});
 
 	app.post('/login', function(req, res) {
@@ -61,8 +65,7 @@ module.exports = function(app) {
 						req.session.regenerate(function() {
 
 							req.session.user = {username: usernameReq};
-							var sessionUser= req.session.user.username;
-							res.send('Congratulations ' + sessionUser + '! You are logged!')
+							res.redirect('/')
 						})
 					} else {
 						// Wrong username/password.
