@@ -17,3 +17,20 @@ module.exports.knex.schema.createTableIfNotExists('users', function(table) {
 	table.string('password');
 	table.string('email');
 }).catch(console.log);
+
+// create projects table
+module.exports.knex.schema.createTableIfNotExists('projects', function(table) {
+	table.increments('id');
+	table.string('name');
+	table.string('description');
+	table.decimal('goal_amount', 8,8);
+}).catch(console.log);
+
+// create addresses table
+module.exports.knex.schema.createTableIfNotExists('project_addresses', function(table) {
+	table.increments('id');
+	table.integer('project_id').unsigned();
+	table.foreign('project_id').references('projects.id');
+	table.string('token');
+}).catch(console.log);
+
