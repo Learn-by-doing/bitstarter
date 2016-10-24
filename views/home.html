@@ -1,17 +1,54 @@
-<h1>Bitstarter homepage</h1>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Projects Index</title>
+</head>
 
+<body>
+	{{#if username}}
+		<h1>Welcome to Bitstarter <strong>{{username}}</strong>! </h1>
+	{{/if}}
 
-{{#if username}}
-  <h1>Welcome to Bitstarter <strong>{{username}}</strong>! </h1>
-{{/if}}
+	{{#unless username}}
+	<a href="/login">Login</a>
+	{{/unless}}
+	{{#if username}}
+	<a href="/logout">Logout</a>
+	{{/if}}
 
+	<h1>Bitstarter homepage</h1>
 
-{{#unless username}}
-<a href="/login">Login</a>
-{{/unless}}
-{{#if username}}
-<a href="/logout">Logout</a>
-{{/if}}
+	<h2>Projects Index</h2>
 
+	{{#if projects}}
+		<p>The following is a list of all the existing projects.</p>
+		<ol>
+			{{#each projects}}
+			<li>
+				<ul class="project">
+					<li class='project-name'>
+						<span>{{name}}</span>
+					</li>
+					<li>
+						<span>Description: </span>
+						<span>{{description}}</span>    
+					</li>
+					<li>
+						<span>Goal: </span>
+						<span>{{goal_amount}}</span>
+					</li>
+					<li>
+						<span>Address: </span>
+						<span>{{token}}</span>
+					</li>
+				</ul>
+			</li>
+			{{/each}}
+		</ol>
+	{{else}}
+		<p>No projects available.</p>
+	{{/if}}
 
-<!-- TODO: list of goals here -->
+</body>
+</html>

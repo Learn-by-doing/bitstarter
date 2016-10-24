@@ -1,0 +1,22 @@
+{
+  "projects" : [
+    {
+      "name" : "Project1",
+      "description" : "Description for Project1.",
+      "goal_amount" : 100,
+      "token" : "16TAy1uNFNEw58uPN4c7C8VnJUYp2ZJUjd"
+    },
+    {
+      "name" : "Project2",
+      "description" : "Description for Project2.",
+      "goal_amount" : 200,
+      "token" : "1Nkk6rPhFk5UbbNWT12QyCTosgjV8MWjeg"
+    },
+    {
+      "name" : "Project3",
+      "description" : "Description for Project3.",
+      "goal_amount" : 300,
+      "token" : "1BHPGY7Rb9WaBBkYPKjZTnKYRzt5mC8NPM"
+    }
+  ]
+}
