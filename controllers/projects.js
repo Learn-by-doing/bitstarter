@@ -13,7 +13,7 @@ module.exports = function(app) {
 
 
 	app.post('/addproject', function(req, res) {
-		db.knex('project')
+		db('projects')
 		.insert({
 		name : req.body.projectName,
 		description : req.body.description,
