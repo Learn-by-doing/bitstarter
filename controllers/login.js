@@ -51,7 +51,7 @@ module.exports = function(app) {
 		// knex compares the information from the form
 		// with the information in the user table
 		// and login the user if it is right
-		db.knex('users')
+		db('users')
 			.where({username: usernameReq })
 				.select('password')
 				.then(function(result) {
