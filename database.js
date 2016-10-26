@@ -25,7 +25,7 @@ db.schema.hasTable('projects').then(function(exists) {
 			table.increments('id');
 			table.string('name');
 			table.string('description');
-			table.decimal('goal_amount', 8,8);
+			table.decimal('goal_amount', 16,8);
 		}).catch(console.log);
 	}
 });
