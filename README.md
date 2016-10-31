@@ -2,6 +2,8 @@
 
 Crowd funding for goals and projects with Bitcoin.
 
+[![Build Status](https://travis-ci.org/Learn-by-doing/bitstarter.svg?branch=master)](https://travis-ci.org/Learn-by-doing/bitstarter) [![Status of Dependencies](https://david-dm.org/Learn-by-doing/bitstarter.svg)](https://david-dm.org/Learn-by-doing/bitstarter)
+
 * Front-facing web site
   * List of all goals/projects
 * Admin interface:
