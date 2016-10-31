@@ -1,9 +1,7 @@
 language: node_js
 node_js:
   - "6"
-  - "5"
   - "4"
-  - "iojs"
 
 # possible fix for bcrypt install failing on Travis CI
 # https://www.serverpals.com/blog/installing-bcrypt-on-travis-ci-with-node-4.x
