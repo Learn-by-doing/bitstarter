@@ -1,8 +1,4 @@
 module.exports = function(grunt) {
-	grunt.loadNpmTasks("gruntify-eslint");
-	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.registerTask("default", ["eslint"]);
-
 	grunt.initConfig({
 		eslint: {
 			options: {
@@ -28,6 +24,20 @@ module.exports = function(grunt) {
 				'test/**/*.js',
 				'*.js'
 			]
+		},
+		mochaTest: {
+			test: {
+				options: {
+					reporter: 'spec'
+				},
+				src: ['test/**/*.js']
+			}
 		}
 	});
+
+	grunt.loadNpmTasks('grunt-mocha-test');
+	grunt.loadNpmTasks("gruntify-eslint");
+	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.registerTask("test", ["mochaTest", "eslint"]);
+	grunt.registerTask("default", ["test"]);
 }
