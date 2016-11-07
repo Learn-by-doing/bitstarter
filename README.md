@@ -38,6 +38,8 @@ Both have pretty straight forward setup guides so getting them working shouldn't
   GRANT ALL PRIVILEGES ON  `bitstarter` . * TO  'bitstarter'@'localhost';
   ```
 
-4. Run `npm start`
+4. Create the first user: In your command line, go to the `/scripts` folder and run `node create-user.js`. Follow the instructions.
+
+5. Run `npm start`
 
 That's it!
