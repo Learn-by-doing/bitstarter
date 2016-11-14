@@ -1,5 +1,5 @@
 var prompt = require('prompt');
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcrypt-nodejs');
 var db = require('../database.js');
 
 // input data schema
@@ -59,9 +59,8 @@ prompt.get(schema, function (err, result) {
 
 	// bcrypt the password
 	var rounds = 1;
-	// var salt = bcrypt.genSaltSync(10);
 	bcrypt.genSalt(rounds, function(err, salt) {
-		bcrypt.hash(result.password, salt, function(err, hash) {
+		bcrypt.hash(result.password, salt, null/* progress callback */, function(err, hash) {
 			// store new user in db
 			db('users')
 				.insert({

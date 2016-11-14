@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/Learn-by-doing/bitstarter#readme",
   "dependencies": {
-    "bcrypt": "^0.8.7",
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.2",
     "chai": "^3.5.0",
     "express": "4.14.0",
