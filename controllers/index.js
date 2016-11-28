@@ -6,4 +6,5 @@ module.exports = function(app) {
 	require('./login')(app);
 	require('./logout')(app);
 	require('./projects')(app);
+	require('./profile')(app);
 };

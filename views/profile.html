@@ -1,0 +1,26 @@
+<div class="form-style-5">
+
+<form method="post" action="/profile">
+<h2> Edit your profile </h2>
+<table>
+<tr>
+	<td><label for="profile-username">Username</label></td>
+	<td><input id="profile-username" name="username" type="text" value="{{username}}" readonly></td>
+</tr>
+<tr>
+	<td><label for="profile-email">Your e-mail</label></td>
+	<td><input id="profile-email" name="email" type="text" value="{{email}}" ></td>
+</tr>
+<tr>
+	<td><label for="profile-password">Password</label></td>
+	<td><input id="profile-password" name="password" type="password" value=""></td>
+	<td>	{{msg}} retype password to confirm   </td>
+</tr>
+<tr><td>
+  <input type="submit" value="Save">
+</td></tr>
+
+</table>
+</form>
+
+</div>
