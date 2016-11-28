@@ -36,6 +36,8 @@ Both have pretty straight forward setup guides so getting them working shouldn't
   GRANT USAGE ON * . * TO  'bitstarter'@'localhost' IDENTIFIED BY  'password' WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;
 
   GRANT ALL PRIVILEGES ON  `bitstarter` . * TO  'bitstarter'@'localhost';
+
+  CREATE DATABASE bitstarter
   ```
 
 4. Create the first user: In your command line, go to the `/scripts` folder and run `node create-user.js`. Follow the instructions.
