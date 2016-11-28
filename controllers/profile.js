@@ -1,4 +1,4 @@
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcrypt-nodejs');
 var db = require('../database.js');
 var middleware = require('../middleware/authentication.js');
 
