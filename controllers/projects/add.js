@@ -1,14 +1,14 @@
 'use strict'
 
-var db = require('../database.js');
+var db = require('../../database.js');
 
 module.exports = function(app) {
 
 	app.get('/projects/add', function(req, res) {
 		res.render('projects-add');
-	}),
+	});
 
-	app.post('/projects', function(req, res) {
+	app.post('/projects/add', function(req, res) {
 		db.transaction(function(trx){
 			db('projects')
 			.transacting(trx)
@@ -24,13 +24,13 @@ module.exports = function(app) {
 					token : req.body.token
 				}).then(function(result) {
 					res.redirect('/');
-				})
+				});
 			})
 			.then(trx.commit)
 			.catch(trx.rollback)
 			.catch(function(error) {
 				console.log(error);
-			})
-		})
-	})
-} // closing module.export
+			});
+		});
+	});
+};
