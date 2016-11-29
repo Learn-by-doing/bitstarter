@@ -30,7 +30,6 @@ app.use(function(req, res, next) {
 	next();
 });
 
-
 app.use(function(req, res, next) {
 	console.log('URL requested', req.originalUrl);
 	next();
@@ -42,6 +41,12 @@ app.use(serveStatic(__dirname + '/public'));
 
 app.config = require('./config');
 require('./controllers')(app);
+
+// This is where we catch express errors. No "app.use" beyond this one!
+app.use(function (err, req, res, next) {
+  console.error(err.stack)
+  res.status(500).send('Oops! Something went wrong.')
+});
 
 app.listen(3000, function () {
 	console.log('Example app listening on port 3000!');
