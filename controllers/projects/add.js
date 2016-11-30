@@ -1,14 +1,15 @@
 'use strict'
 
 var db = require('../../database.js');
+var middleware = require('../../middleware/authentication.js');
 
 module.exports = function(app) {
 
-	app.get('/projects/add', function(req, res) {
+	app.get('/projects/add', middleware.requireAuthentication, function(req, res) {
 		res.render('projects-add');
 	});
 
-	app.post('/projects/add', function(req, res) {
+	app.post('/projects/add', middleware.requireAuthentication, function(req, res) {
 		db.transaction(function(trx){
 			db('projects')
 			.transacting(trx)
