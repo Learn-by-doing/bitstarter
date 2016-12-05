@@ -74,7 +74,7 @@ To contribute to the project, you will use pull requests instead of pushing your
 
 Now that you have your fork, you must clone it locally. Run the following command:
 ```bash
-git clone https://github.com/Learn-by-doing/YOUR_USERNAME.git
+git clone https://github.com/YOUR_USERNAME/bitstarter.git
 ```
 Be sure to replace `YOUR_USERNAME` with your GitHub username.
 
