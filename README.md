@@ -38,7 +38,7 @@ Before you can run the server application, you will need to install the node mod
 ```bash
 npm install
 ```
-This will install the dependencies listed in the project's [package.json]() file.
+This will install the dependencies listed in the project's [package.json](https://github.com/Learn-by-doing/bitstarter/blob/master/package.json) file.
 
 
 ## Start the Application
