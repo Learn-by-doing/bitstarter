@@ -9,6 +9,8 @@ A crowd funding website that uses Bitcoin.
 
 You will first need to have the following dependencies installed before you can work on this project:
 * [Node.js](https://nodejs.org/en/) - you can use either version (LTS or latest)
+  * For Windows - use the installation package from the node website
+  * For Linux and Mac - use [nvm](https://github.com/creationix/nvm) to install node
 * [Git](https://git-scm.com/downloads)
 * [MySQL](http://www.mysql.com/)
   * [Installation instructions for Ubuntu](https://help.ubuntu.com/lts/serverguide/mysql.html)
