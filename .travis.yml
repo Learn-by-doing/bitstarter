@@ -1,24 +1,10 @@
 before_script:
-  - mysql -e 'DROP DATABASE IF EXISTS bitstarterTest; CREATE DATABASE bitstarterTest;'
-  - mysql -e "CREATE USER 'bitstarterTest'@'localhost' IDENTIFIED BY 'bitstarterTest';"
-  - mysql -u root -e "GRANT ALL ON bitstarterTest.* TO 'bitstarterTest'@'localhost';"
-
+  - mysql -e 'DROP DATABASE IF EXISTS bitstarter_test; CREATE DATABASE bitstarter_test; GRANT ALL ON bitstarter_test.* TO 'bitstarter_test'@'localhost' IDENTIFIED BY 'password';'
 
 language: node_js
 node_js:
   - "6"
   - "4"
 
-# possible fix for bcrypt install failing on Travis CI
-# https://www.serverpals.com/blog/installing-bcrypt-on-travis-ci-with-node-4.x
-
-addons:
-  apt:
-    sources:
-    - ubuntu-toolchain-r-test
-    packages:
-    - gcc-4.8
-    - g++-4.8
-
 env:
-  - CXX=g++-4.8 DB_HOST="127.0.0.1" DB_PORT=3306 DB_USER="bitstarterTest" DB_PASS="bitstarterTest" DB_NAME="bitstarterTest"
+  - BITSTARTER_DB_HOST="127.0.0.1" BITSTARTER_DB_PORT="3306" BITSTARTER_DB_USER="bitstarter_test" BITSTARTER_DB_PASS="password" BITSTARTER_DB_NAME="bitstarter_test"
