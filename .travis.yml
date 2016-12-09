@@ -1,3 +1,9 @@
+before_script:
+  - mysql -e 'DROP DATABASE IF EXISTS bitstarterTest; CREATE DATABASE bitstarterTest;'
+  - mysql -e "CREATE USER 'bitstarterTest'@'localhost' IDENTIFIED BY 'bitstarterTest';"
+  - mysql -u root -e "GRANT ALL ON bitstarterTest.* TO 'bitstarterTest'@'localhost';"
+
+
 language: node_js
 node_js:
   - "6"
@@ -15,4 +21,4 @@ addons:
     - g++-4.8
 
 env:
-  - CXX=g++-4.8
+  - CXX=g++-4.8 DB_HOST="127.0.0.1" DB_PORT=3306 DB_USER="bitstarterTest" DB_PASS="bitstarterTest" DB_NAME="bitstarterTest"
