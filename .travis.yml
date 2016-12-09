@@ -1,5 +1,7 @@
 before_script:
-  - mysql -u root -e 'DROP DATABASE IF EXISTS bitstarter_test; CREATE DATABASE bitstarter_test; GRANT ALL ON bitstarter_test.* TO 'bitstarter_test'@'localhost' IDENTIFIED BY 'password';'
+  - mysql -e "DROP DATABASE IF EXISTS bitstarter_test; CREATE DATABASE bitstarter_test;"
+  - mysql -e "CREATE USER 'bitstarter_test'@'localhost' IDENTIFIED BY 'bitstarter_test';"
+  - mysql -u root -e "GRANT ALL ON bitstarter_test.* TO 'bitstarter_test'@'localhost';"
 
 language: node_js
 node_js:
