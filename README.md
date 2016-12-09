@@ -22,13 +22,14 @@ You need to get both Node and git working before moving on with the rest of the 
 
 Once you have MySQL installed, you will need to setup the local database. Run the following SQL queries to create the database and user:
 ```sql
-CREATE USER 'bitstarter'@'localhost' IDENTIFIED BY  'password';
+CREATE DATABASE IF NOT EXISTS bitstarter;
+CREATE DATABASE IF NOT EXISTS bitstarter_test;
 
 GRANT USAGE ON * . * TO  'bitstarter'@'localhost' IDENTIFIED BY  'password' WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;
+GRANT USAGE ON * . * TO  'bitstarter_test'@'localhost' IDENTIFIED BY  'password' WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;
 
 GRANT ALL PRIVILEGES ON  `bitstarter` . * TO  'bitstarter'@'localhost';
-
-CREATE DATABASE bitstarter
+GRANT ALL PRIVILEGES ON  `bitstarter_test` . * TO  'bitstarter_test'@'localhost';
 ```
 
 
@@ -118,18 +119,3 @@ git push origin master
 ```
 
 That's it! Your local and your fork (in GitHub) should now both be up-to-date.
-
-
-## Testing environment
-
-1. For testing you have to create a testing database. Sample SQL statement to do this:
-
-```sql
-CREATE USER 'bitstarterTest'@'localhost' IDENTIFIED BY  'bitstarterTest';
-
-GRANT USAGE ON * . * TO  'bitstarterTest'@'localhost' IDENTIFIED BY  'bitstarterTest' WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;
-
-GRANT ALL PRIVILEGES ON  `bitstarterTest` . * TO  'bitstarterTest'@'localhost';
-```
-
-2. Open a terminal and run `grunt`
