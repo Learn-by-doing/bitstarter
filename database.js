@@ -1,10 +1,10 @@
 'use strict';
 
-var config = require('./config.js');
+var config = require('./config');
 
 var db = module.exports = require('knex')({
 	client: 'mysql',
-	connection: config.dbOptions
+	connection: config.db
 });
 
 db.schema.hasTable('users').then(function(exists) {

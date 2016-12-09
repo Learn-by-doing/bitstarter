@@ -1,13 +1,16 @@
+'use strict';
+
 var bcrypt = require('bcrypt-nodejs');
-var db = require('../database.js');
-var middleware = require('../middleware/authentication.js');
 
 module.exports = function(app) {
-	app.use('/profile',middleware.requireAuthentication);
+
+	app.use('/profile', app.middleware.requireAuthentication);
 
 	app.get('/profile', function(req, res, next) {
+
 		var sessionUser= req.session.user.username;
-		db('users')
+
+		app.db('users')
 			.where({username: sessionUser })
 			.select('email')
 			.then(function(result) {
@@ -19,14 +22,13 @@ module.exports = function(app) {
 			});
 	});
 
-
 	app.post('/profile', function(req, res) {
 
 		var usernameReq = req.body.username;
 		var passwordReq = req.body.password;
 		var emailReq = req.body.email;
 
-		db('users')
+		app.db('users')
 			.where({username: usernameReq })
 			.select('password')
 			.then(function(result) {
@@ -37,7 +39,7 @@ module.exports = function(app) {
 				var hash = result[0].password;
 				bcrypt.compare(passwordReq, hash, function(err,result) {
 					if (result) {
-						db('users')
+						app.db('users')
 							.where({username: usernameReq })
 							.update({email:emailReq})
 							.then(function (count) {
@@ -67,4 +69,4 @@ module.exports = function(app) {
 				console.log(error);
 			}); 
 	});
-}
+};

@@ -1,17 +1,14 @@
 'use strict'
 
-var db = require('../../database.js');
-var middleware = require('../../middleware/authentication.js');
-
 module.exports = function(app) {
 
-	app.get('/projects/add', middleware.requireAuthentication, function(req, res) {
+	app.get('/projects/add', app.middleware.requireAuthentication, function(req, res) {
 		res.render('projects-add');
 	});
 
-	app.post('/projects/add', middleware.requireAuthentication, function(req, res) {
-		db.transaction(function(trx){
-			db('projects')
+	app.post('/projects/add', app.middleware.requireAuthentication, function(req, res) {
+		app.db.transaction(function(trx) {
+			app.db('projects')
 			.transacting(trx)
 			.insert({
 				name : req.body.name,
@@ -19,7 +16,7 @@ module.exports = function(app) {
 				goal_amount : req.body.amount,
 			})
 			.then(function(result){
-				db('project_addresses')
+				app.db('project_addresses')
 				.insert({
 					project_id : result,
 					token : req.body.token

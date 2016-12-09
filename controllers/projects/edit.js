@@ -1,12 +1,12 @@
-var db = require('../../database.js');
-var middleware = require('../../middleware/authentication.js');
+'use strict';
 
 module.exports = function(app) {
 
-	app.use('/projects/edit/:id',middleware.requireAuthentication);
+	app.use('/projects/edit/:id', app.middleware.requireAuthentication);
 
 	app.get('/projects/edit/:id', function(req, res) {
-		db('projects')
+
+		app.db('projects')
 			.innerJoin('project_addresses','projects.id','project_addresses.project_id')
 			.where({'projects.id': req.params.id })
 			.select('name','description','goal_amount','token')
@@ -26,8 +26,9 @@ module.exports = function(app) {
 	});
 
 	app.post('/projects/edit/:id', function(req, res) {
-		db.transaction(function(trx){
-			db('projects')
+
+		app.db.transaction(function(trx){
+			app.db('projects')
 			.transacting(trx)
 			.where({'projects.id': req.params.id})
 			.update({
@@ -36,7 +37,7 @@ module.exports = function(app) {
 				goal_amount : req.body.amount,
 			})
 			.then(function(result){
-				db('project_addresses')
+				app.db('project_addresses')
 				.where({'project_addresses.project_id': req.params.id})
 				.update({
 					token : req.body.token
@@ -50,6 +51,5 @@ module.exports = function(app) {
 				console.log(error);
 			});
 		});
-
 	});
 };

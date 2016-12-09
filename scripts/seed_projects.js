@@ -1,4 +1,6 @@
-var db = require('../database.js');
+'use strict';
+
+var db = require('../database');
 var fs = require('fs');
 
 // Get content from file

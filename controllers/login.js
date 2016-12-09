@@ -1,45 +1,16 @@
 'use strict';
 
-var bodyParser = require('body-parser');
-var session = require('express-session');
 var bcrypt = require('bcrypt-nodejs');
-var db = require('../database.js');
-var config = require('../config.js');
-var MySQLStore = require('express-mysql-session')(session);
-var sessionStore = new MySQLStore(config.dbOptions);
 
 module.exports = function(app) {
 
-	app.use(bodyParser.urlencoded({ extended: false }));
-	app.use(session({
-		key: 'bitstarter-cookie',
-		secret: 'secret!',
-		store: sessionStore,
-		resave: false,
-		saveUninitialized: true
-	}));
-
-	app.use(function(req, res, next) {
-		console.log('URL requested', req.originalUrl);
-		next();
-	});
-
-	app.use(function(req, res, next) {
-
-		req.isAuthenticated = function() {
-			return !!req.session.user;
-		};
-
-		next();
-	});
-
 	app.get('/login', function(req, res, next) {
+
 		if (req.isAuthenticated()) {
 			res.redirect('/');
 		} else {
 			res.render('login');
 		}
-
 	});
 
 	app.post('/login', function(req, res) {
@@ -51,7 +22,7 @@ module.exports = function(app) {
 		// knex compares the information from the form
 		// with the information in the user table
 		// and login the user if it is right
-		db('users')
+		app.db('users')
 			.where({username: usernameReq })
 				.select('password')
 				.then(function(result) {
@@ -75,4 +46,4 @@ module.exports = function(app) {
 					console.log(error);
 				}); // closing then(
 	});
-} // closing module.exports
+};

@@ -1,6 +1,8 @@
+'use strict';
+
 var prompt = require('prompt');
 var bcrypt = require('bcrypt-nodejs');
-var db = require('../database.js');
+var db = require('../database');
 
 // input data schema
 var schema = {

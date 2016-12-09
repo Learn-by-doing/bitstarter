@@ -1,8 +1,7 @@
 'use strict'
 
 var async = require('async');
-var db = require('../database.js');
-
+var db = require('../database');
 
 module.exports = {
 	deleteTestDb : function(cb) {
@@ -14,6 +13,5 @@ module.exports = {
 				next();
 			}).catch(next);
 		}, cb);
-	},
-
-} // close module.exports
+	}
+};
