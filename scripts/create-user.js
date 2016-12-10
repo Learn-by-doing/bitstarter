@@ -46,7 +46,7 @@ var schema = {
 prompt.start();
 
 // get the properties for the new user
-prompt.get(schema, function (err, result) {
+prompt.get(schema, function(err, result) {
 
 	// check if the username exists
 	db('users')

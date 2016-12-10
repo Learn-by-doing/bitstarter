@@ -1,0 +1,21 @@
+{
+	"default": [
+		"test"
+	],
+	"test": [
+		"test:unit",
+		"test:integration",
+		"test:code-style"
+	],
+	"test:code-style": [
+		"eslint"
+	],
+	"test:unit": [
+		"env:test",
+		"mochaTest:unit"
+	],
+	"test:integration": [
+		"env:test",
+		"mochaTest:integration"
+	]
+}

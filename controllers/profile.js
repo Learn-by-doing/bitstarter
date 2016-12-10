@@ -42,7 +42,7 @@ module.exports = function(app) {
 						app.db('users')
 							.where({username: usernameReq })
 							.update({email:emailReq})
-							.then(function (count) {
+							.then(function(count) {
 								if (count == 1) {
 									res.render('profile', {
 										username: usernameReq, 

@@ -5,12 +5,12 @@ var _ = require('underscore');
 
 module.exports = {
 
-	getFunds : function(addresses, callback) {
+	getFunds: function(addresses, cb) {
 
 		var uri = 'https://blockchain.info/multiaddr?active=';
 		uri += addresses.join('|');
 
-		request(uri, function (error, response, body) {
+		request(uri, function(error, response, body) {
 
 			if (!error && response.statusCode == 200) {
 				var obj = JSON.parse(body);
@@ -18,10 +18,10 @@ module.exports = {
 				_.each(addresses, function(element, index) {
 					allAccountsReceived += obj.addresses[index].total_received;
 				});
-				callback(allAccountsReceived);
+				cb(allAccountsReceived);
 			} else {
 				console.log('There was an error')
 			}
 		});
 	}
-}; // closing bitcoin module.exports
+};

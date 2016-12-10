@@ -1,17 +1,23 @@
+'use strict';
+
 var chai = require('chai');
 var chaiHttp = require('chai-http');
 var expect = require('chai').expect;
 chai.use(chaiHttp);
 
-describe('testing login.js and logout.js', function () {
+var manager = require('../../manager');
 
-	it('testing get /login', function(done){
+describe('testing login.js and logout.js', function() {
+
+	before(manager.setUp);
+	after(manager.tearDown);
+
+	it('testing get /logout', function(done){
 		chai.request('http://localhost:3000/')
-		.get('login')
+		.get('logout')
 		.end(function(err, res){
 			expect(res).to.have.status(200);
 			done();
-		})
-	})
-
-}); // closing describe testing login.js
+		});
+	});
+});
