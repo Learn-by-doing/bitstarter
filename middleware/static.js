@@ -4,5 +4,5 @@ module.exports = function(app) {
 
 	var serveStatic = require('serve-static');
 
-	app.use(serveStatic(__dirname + '/public'));
+	app.use(serveStatic(__dirname + '/../public'));
 };
