@@ -1,0 +1,31 @@
+body {
+  background-color: #1A1A1A;
+  color: #FBFBFB;
+}
+
+h1 {
+  color: #FBFBFB;
+}
+
+a {
+  color: #FBFBFB;
+  text-decoration: none;
+}
+
+.header {
+  text-align: right;
+  color: #E6E6E6;
+}
+
+.project {
+  margin: 10px;
+  width: 30%;
+  float: left;
+  color: #E6E6E6;
+  min-width: 200px;
+  overflow: hidden;
+}
+
+.project .name {
+  color: #1ABE7B;
+}

@@ -1,0 +1,11 @@
+<div class='header'>
+  <p>
+    {{#if user}}
+      Logged in as <a href="/profile">{{user.username}}</a>
+      |
+      <a href="/logout">Logout</a>
+    {{else}}
+      <a href="/login">Login</a>
+    {{/if}}
+  </p>
+</div>

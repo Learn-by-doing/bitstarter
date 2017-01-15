@@ -6,7 +6,6 @@ module.exports = function(app) {
 
 		if (req.isAuthenticated()) {
 			// Already logged in.
-			var username = req.session.user.username;
 			var loggedMessage = 'You are logged';
 		}
 
@@ -21,7 +20,6 @@ module.exports = function(app) {
 		.then(function(projects) {
 			res.render('home', {
 				projects: projects,
-				username: username,
 				loggedMessage: loggedMessage
 			});
 		}).catch(console.log);

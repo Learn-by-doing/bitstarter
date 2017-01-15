@@ -12,6 +12,7 @@ module.exports = function(app) {
 	require('./session')(app);
 	require('./auth')(app);
 	require('./logging')(app);
+	require('./current_user')(app);
 	require('./template')(app);
 	require('./static')(app);
 };
