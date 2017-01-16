@@ -10,6 +10,7 @@ module.exports = function(app) {
 		}
 
 		app.db.select([
+			'projects.id',
 			'projects.name',
 			'projects.description',
 			'projects.goal_amount',
